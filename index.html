@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre o Livro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Cadastre o Livro</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+    
+            <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('enviar_dados') }}" method="post">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required><br>
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn" required><br>
+        <label for="ano">Ano:</label>
+        <input type="text" id="ano" name="ano" required><br>
+        <label for="editora">Editora:</label>
+        <input type="text" id="editora" name="editora" required><br>
+        <label for="autor">Autor(a):</label>
+        <input type="text" id="autor" name="autor" required><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <hr>
+
+    <h2>Pesquisar Livro</h2>
+    <form action="{{ url_for('pesquisar_dados') }}" method="post">
+        <label for="titulo_pesquisa">Título:</label>
+        <input type="text" id="titulo_pesquisa" name="titulo_pesquisa" required><br>
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    {% if resultado %}
+        <div>
+            <h3>Resultado:</h3>
+            <p>{{ resultado|safe }}</p>
+        </div>
+    {% endif %}
+    <script>
+        
+    </script>
+</body>
+</html>
