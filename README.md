@@ -1,5 +1,5 @@
 # Gerenciador de livros 
-# Projeto feito em python
+Projeto feito em python
 # Projeto da Faculdade
 # Feito por Flávia Alessandra e Geovana Souza
 
